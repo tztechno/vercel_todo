@@ -11,12 +11,13 @@
             display: flex;
             align-items: center;
             margin-bottom: 10px;
+            padding-right: 20px; /* Right padding to ensure space for button */
         }
         .todo-item span {
             flex-grow: 1;
         }
-        .todo-item button {
-            margin-left: 10px;
+        .remove-button {
+            margin-left: 10px; /* Space between text and button */
         }
     </style>
     <meta name="twitter:card" content="summary_large_image" />
@@ -34,7 +35,7 @@
             <li v-for="(todo, index) in todos" :key="index" class="todo-item">
                 <input type="checkbox" v-model="todo.done" />
                 <span :style="{ textDecoration: todo.done ? 'line-through' : 'none' }">{{ todo.text }}</span>
-                <button @click="removeTodo(index)">Remove</button>
+                <button @click="removeTodo(index)" class="remove-button">Remove</button>
             </li>
         </ul>
     </div>
