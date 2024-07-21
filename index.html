@@ -6,7 +6,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Todo List</title>
     <script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
-
+    <style>
+        .todo-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .todo-item span {
+            flex-grow: 1;
+        }
+        .remove-button {
+            margin-left: 10px;
+        }
+    </style>
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@IshiiStpete" />
     <meta name="twitter:title" content="simple todo list">
@@ -19,10 +31,10 @@
         <textarea v-model="newTodos" placeholder="Enter multiple todos, each on a new line"></textarea>
         <button @click="addTodos">Add Todos</button>
         <ul>
-            <li v-for="(todo, index) in todos" :key="index">
+            <li v-for="(todo, index) in todos" :key="index" class="todo-item">
                 <input type="checkbox" v-model="todo.done" />
                 <span :style="{ textDecoration: todo.done ? 'line-through' : 'none' }">{{ todo.text }}</span>
-                <button @click="removeTodo(index)">Remove</button>
+                <button @click="removeTodo(index)" class="remove-button">Remove</button>
             </li>
         </ul>
     </div>
