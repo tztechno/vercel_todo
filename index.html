@@ -15,7 +15,7 @@
         .todo-item span {
             flex-grow: 1;
         }
-        .remove-button {
+        .todo-item button {
             margin-left: 10px;
         }
     </style>
@@ -34,7 +34,7 @@
             <li v-for="(todo, index) in todos" :key="index" class="todo-item">
                 <input type="checkbox" v-model="todo.done" />
                 <span :style="{ textDecoration: todo.done ? 'line-through' : 'none' }">{{ todo.text }}</span>
-                <button @click="removeTodo(index)" class="remove-button">Remove</button>
+                <button @click="removeTodo(index)">Remove</button>
             </li>
         </ul>
     </div>
