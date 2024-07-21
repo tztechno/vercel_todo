@@ -16,7 +16,8 @@
 <body>
     <div id="app">
         <h1>Todo List</h1>
-        <input v-model="newTodo" @keyup.enter="addTodo" placeholder="Add a new todo" />
+        <textarea v-model="newTodos" placeholder="Enter multiple todos, each on a new line"></textarea>
+        <button @click="addTodos">Add Todos</button>
         <ul>
             <li v-for="(todo, index) in todos" :key="index">
                 <input type="checkbox" v-model="todo.done" />
@@ -29,7 +30,7 @@
         const app = Vue.createApp({
             data() {
                 return {
-                    newTodo: '',
+                    newTodos: '',
                     todos: []
                 };
             },
@@ -48,11 +49,12 @@
                 }
             },
             methods: {
-                addTodo() {
-                    if (this.newTodo.trim() !== '') {
-                        this.todos.push({ text: this.newTodo, done: false });
-                        this.newTodo = '';
-                    }
+                addTodos() {
+                    const todosArray = this.newTodos.trim().split('\n').filter(todo => todo.trim() !== '');
+                    todosArray.forEach(todoText => {
+                        this.todos.push({ text: todoText, done: false });
+                    });
+                    this.newTodos = '';
                 },
                 removeTodo(index) {
                     this.todos.splice(index, 1);
@@ -64,3 +66,4 @@
 </body>
 
 </html>
+
