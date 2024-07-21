@@ -21,7 +21,7 @@
         <ul>
             <li v-for="(todo, index) in todos" :key="index">
                 <input type="checkbox" v-model="todo.done" />
-                <span :style="{ textDecoration: todo.done ? 'line-through' : 'none' }">{{ todo.text }}</span>
+                <span :style="{ textDecoration: todo.done ? 'line-through' : 'none' }">{{ todo.text }}</span>&nbsp;
                 <button @click="removeTodo(index)">Remove</button>
             </li>
         </ul>
